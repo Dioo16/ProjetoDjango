@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pessoa Data</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Dados da pessoa digitada</h1>
+    {% if data_human != None %}
+        <label class="home"> {{ data_human}}</label>
+    {% else %}
+        <H1> dados não encontrados</H1>
+    {% endif %}
+
+    <img src="{% static 'artworks-000224146335-57mx7i-t500x500.jpg' %}">
+
+
+</body>
+</html>

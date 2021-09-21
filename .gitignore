@@ -1,0 +1,8 @@
+# created by virtualenv automatically
+*.env
+*.idea
+*.sqlite3
+*.pyc
+.DS_Store
+media
+.venv/
