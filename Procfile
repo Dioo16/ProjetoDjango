@@ -1,1 +1,1 @@
-"start":"gunicorn gestao_clientes.wsgi"
+web:gunicorn gestao_clientes.wsgi
