@@ -5,4 +5,4 @@
 *.pyc
 .DS_Store
 media
-.project
+.venv
