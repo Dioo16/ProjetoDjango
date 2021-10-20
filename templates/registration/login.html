@@ -1,16 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-            <h1>Login</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Login</button>
+{% extends 'Base.html' %}
+{% load bootstrap %}
+{% block tittle %}Login{% endblock %}
 
-    </form>
-</body>
-</html>
+
+
+{% block main%}
+
+<div class="row justify-content-center ">
+    <div class="col"></div>
+    <div class="col align-self-center">
+      <h1>Login</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{form|bootstrap}}
+                <button type="submit"  class="btn btn-dark">Login</button>
+            </form>
+    </div>
+     <div class="col">
+
+    </div>
+</div>
+
+
+{% endblock %}

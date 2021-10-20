@@ -11,11 +11,11 @@ def person_list(request):
     return  render(request, 'CRUD.html', {'Persona': persons})
 @login_required()
 def person_new(request):
-    form = PersonForm(request.POST or  None, request.FILES or None, None)
+    form = PersonForm(request.POST or  None, request.FILES or None)
     if form.is_valid():
         form.save()
         return redirect('person_list')
-    return  render(request, 'person_form.html', {'form': form})
+    return render(request, 'person_form_new.html', {'form': form})
 @login_required()
 def person_update(request, id):
     person = get_object_or_404(Person, pk=id)#Vai pegar o objeto person, onde a primary key é igual a ''Id'', que passamos na função

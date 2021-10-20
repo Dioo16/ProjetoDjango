@@ -1,31 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Crud básico</title>
-</head>
-<body>
-    <ul>
-        {% for pessoa in Persona %}
-        <li>
-            <a href=" http://localhost:8000/media/{{pessoa.Photo}}"> {{ pessoa.Photo }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-    <ul>
-        {% for pessoa in Persona %}
-            <li>
-                <a href="{% url 'person_update' pessoa.id %}">{{pessoa.first_name}}</a>
-                <form method="POST">
-                        {% csrf_token %}
-                    <button><a href="{% url 'person_delete' pessoa.id %}"><label style="">Excluir?</label></a></button>
+{% extends 'Base.html' %}
 
-                </form>
+{% block tittle %}Administração{% endblock %}
+
+href="{% url 'person_update' pessoa.id %}"
+{% block main%}
+
+ <div class="row">
+    <div class="col"></div>
+    <div class="col-6">
+        <ul class="list-group">
+        {% for pessoa in Persona %}
+            <li class="list-group-item">
+                <a >{{pessoa.first_name}}</a>
+                    <a href="{% url 'person_delete' pessoa.id %}"><button class="btn btn-danger btn-sm"> Excluir</button></a>
+                    <a href="{% url 'person_update' pessoa.id %}"><button class="btn btn-light btn-sm"> Editar</button></a>
             </li>
         {% endfor %}
-    </ul>
+        </ul>
+    </div>
+    <div class="col"></div>
+ </div>
 
-    <a href="{% url 'person_new'%}"><button>Nova Pessoa</button></a>
-    <button><a href="{% url 'logoutHome' %}"><label style="">Deslogar</label></a></button>
-</body>
-</html>
+<div class="row">
+    <div class="col"></div>
+    <div class="col-md-4 offset-md-2">
+        <br>
+        <a href="{% url 'person_new'%}"><button class="btn btn-primary">Nova Pessoa</button></a>
+        <a href="{% url 'logoutHome' %}"><button class="btn btn-warning">Deslogar</button></a></a>
+    </div>
+    <div class="col"></div>
+</div>
+
+
+{% endblock %}

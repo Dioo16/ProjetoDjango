@@ -32,7 +32,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ['gestaodelientes.herokuapp.com']
+ALLOWED_HOSTS = ['gestaodelientes.herokuapp.com','localhost']
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrapform',
     'Clientes',
     'home',
 ]
