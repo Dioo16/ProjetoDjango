@@ -7,8 +7,15 @@ from django.contrib.auth import logout
 
 @login_required()
 def person_list(request):
-    persons = Person.objects.all()
+    valueSearch = request.GET.get('search', None)
+
+    if valueSearch:
+        persons = Person.objects.all()
+        persons = persons.filter(first_name=valueSearch)
+    else:
+        persons = Person.objects.all()
     return  render(request, 'CRUD.html', {'Persona': persons})
+
 @login_required()
 def person_new(request):
     form = PersonForm(request.POST or  None, request.FILES or None)

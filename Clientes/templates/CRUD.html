@@ -1,9 +1,32 @@
 {% extends 'Base.html' %}
 
+<style>
+.row>* {
+    /* flex-shrink: 0; */
+    /* width: 100%; */
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+}
+</style>
+
 {% block tittle %}Administração{% endblock %}
 
 href="{% url 'person_update' pessoa.id %}"
 {% block main%}
+
+
+<div class="row">
+    <form class="form-inline" method="get">
+        <div class="col" style="margin-left: 364px;">
+              <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" id="search" name="search" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </div>
+    </form>
+</div>
 
  <div class="row">
     <div class="col"></div>
@@ -11,9 +34,13 @@ href="{% url 'person_update' pessoa.id %}"
         <ul class="list-group">
         {% for pessoa in Persona %}
             <li class="list-group-item">
-                <a >{{pessoa.first_name}}</a>
-                    <a href="{% url 'person_delete' pessoa.id %}"><button class="btn btn-danger btn-sm"> Excluir</button></a>
-                    <a href="{% url 'person_update' pessoa.id %}"><button class="btn btn-light btn-sm"> Editar</button></a>
+                <div class="row">
+                <p style="width: 50%;">{{pessoa.first_name}}</p>
+                    <div class="buttons">
+                        <a href="{% url 'person_update' pessoa.id %}"><button class="btn btn-light btn-sm"> Editar</button></a>
+                        <a href="{% url 'person_delete' pessoa.id %}"><button class="btn btn-danger btn-sm"> Excluir</button></a>
+                    </div>
+                </div>
             </li>
         {% endfor %}
         </ul>
@@ -23,7 +50,7 @@ href="{% url 'person_update' pessoa.id %}"
 
 <div class="row">
     <div class="col"></div>
-    <div class="col-md-4 offset-md-2">
+    <div class="col-md-4 offset-md-2" style="margin-right: 63px;">
         <br>
         <a href="{% url 'person_new'%}"><button class="btn btn-primary">Nova Pessoa</button></a>
         <a href="{% url 'logoutHome' %}"><button class="btn btn-warning">Deslogar</button></a></a>
